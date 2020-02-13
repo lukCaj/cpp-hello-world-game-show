@@ -1,0 +1,96 @@
+/* 
+WHAT I WANT TO GET DONE HERE: (y = done, t = to test, n = to do)
+
+[y]- Print out "Hello World!"
+[y]- Create ASCI Hello World text.
+[n]- Set an ASCI overlay to make the program look good.
+
+[y]- Introduce the game show named "Hello World!"
+[y]- You are able to input your name and sex at the start, which will be used in the game-show and the high score.
+    [y]- If your response is "yes" or "yes please" to what is your sex, then you get a unique response.
+        [y]- The joke responses will be saved into a counter.
+
+[n]- Make a "game-show" where you get to choose one of three games to play, then the remaining two and then the last one. (Have each game their own programs)
+    [n]- Show all 3 games at first, then remove the option of the games that have been played.
+    [n]- When the 2nd game is played, it should ask "Are you ready to play _____?" depending which one is last.
+    [n]- The choices are given numerically, so you can choose option 1, 2 or 3 (and later 1 or 2).
+        [n]- If your response is a number that is too large or negative, then respond that there is no choice like that.
+        [n]- If your response is non-integer, the annoyance points counter will tick up, and if it goes high enough, it will give a unique response at the end of the game show.
+
+[n]- Game show 1: Guess My Number! (1-100)
+    [n]- Explain the rules and the scoring.
+    [n]- Presend a unique ASCI overlay.
+    [n]- Ask the player if they're ready, so a number is generated.
+    [n]- The player can have 8 guesses, if they guess incorrectly, then the game will say "Higher." or "Lower."
+        [n]- If the guesses are innapropriate (e.g. non-integers like floats, strings and numbers outside the considered range), then they will be asked again to guess (and get an annoyance point).
+    [n]- You get 500 points for guessing the number correctly.
+        [n]- If you get it on the 8th guess, the multiplier will be 1, it goes up by 0.5 the less guesses it takes, so maximum multiplier is 5.
+        [n]- If you lose, you get 100 points - best guess gap.
+    [n]- At the end, present the score and go to the main function, noting that game show 1 has been done.
+
+[n]- Game show 2: Rock, Paper, Scissors!
+    [n]- Explain the rules and the scoring.
+    [n]- Presend a unique ASCI overlay.
+    [n]- The opponent's name is going to be generated based on a list of names in name_array.
+    [n]- Ask the player if they're ready, so the opponent moves are generated (and put into an array). There are going to be 9 moves prepared.
+        [n]- If the player makes it to 4 - 4, there will be a dramatic text and the ASCI border changes to make it more dramatic.
+    [n]- The player will guess rock (1), paper (2) or scissors (3) and will clearly track your wins and the opponents wins.
+        [n]- If the player doesn't choose 1,2 or 3, then the player is asked to try again, and get an annoyance point.
+    [n]- 50 points for each win, if you win 5 games first, then you get a multiplier of 5 - 1*(opponent wins). If you lose, you get 0 points.
+    [n]- If you get 0 points in this game, you get a pity point (only 1 point).
+    [n]- At the end, present the score and go to the main function.
+
+[n]- Game show 3: Hangman!
+    [n]- Explain the rules and the scoring.
+    [n]- Presend a unique ASCI overlay.
+    [n]- Figure out a way to make an array of strings as words/phrases, storing 100's of strings efficiently.
+    [n]- Ask the player if they're ready, so the word/phrase is chosen.
+    [n]- Visually generate underscores (_ _ _/_ _ _) to show the missing characters.
+    [n]- Visually show what are the available characters to choose from.
+        [n]- If I can, I should make it so you can only type 1 character.
+        [n]- If the player uses invalid characters, it doesn't count as a turn and an annoyance point is given.
+    [n]- Visually show the hangman and how many lives the player has.
+    [n]- If the player has 0 lives, the player loses the game.
+        [n]- The player score is the characters guessed correctly - characters missing (if it's negative, it's 
+    [n]- The player score is 500 points upon winning, and a multiplier of 1 if the player has 1 life, and grows by 0.25 for each life, so maximum multiplier is 2.75.
+    [n]- The player gets 8 lives.
+    [n]- At the end, present the score and go to the main function.
+
+[n]- Score will be saved for all three games.
+    [n]- At the end of each game, you'll be informed your score from the game and total score.
+    [n]- At the end of the show, a high-score of 10 spaces will be shown at the end, with the scores and the names of the players.
+        [n]- In case that the scores in the high score are the same, the latest one goes on top.
+        [n]- If the score is 11th place, it will show the high score but will not put into memory.
+
+[n]- Have arrays of same type of choices (e.g. positive responses would be like "yes", "yeah", "okay", "y").
+    [n]- Positive responses.
+    [n]- Negative responses.
+
+[n]- By the end of the program, ask if you want to play again.
+    [n]- Remember to reset the score, name and sex if you quit (just to make sure that it doesn't try to remember those if you close it and open it).
+    [n]- Remember to reset the score and ask if you want to change name or sex (1 = keep same, 2 = change name, 3 = change sex, 4 = change name and sex).
+
+Useful Information (Linux(?)):
+\033[0m - is the default color for the console
+\033[0;#m - is the color of the text, where # is one of the codes mentioned above
+\033[1m - makes text bold
+\033[1;#m - makes colored text bold**
+\033[2;#m - colors text according to # but a bit darker
+\033[4;#m - colors text in # and underlines
+\033[7;#m - colors the background according to #
+\033[9;#m - colors text and strikes it
+\033[A - moves cursor one line above (carfull: it does not erase the previously written line)
+\033[B - moves cursor one line under
+\033[C - moves cursor one spacing to the right
+\033[D - moves cursor one spacing to the left
+
+Code for setting colours (Windows only):
+HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+  // you can loop k higher to see more color choices
+  for(int k = 1; k < 255; k++)
+  {
+    // pick the colorattribute k you want
+    SetConsoleTextAttribute(hConsole, k);
+    cout << k << " I want to be nice today!" << endl;
+  }
+*/

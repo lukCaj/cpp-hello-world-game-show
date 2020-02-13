@@ -1,0 +1,4 @@
+﻿  Chpt1_HelloWorld.cpp
+E:\Lukasz\Programming\C++\Chpt1_HelloWorld\Chpt1_HelloWorld\Chpt1_HelloWorld.cpp(348,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\Lukasz\Programming\C++\Chpt1_HelloWorld\Chpt1_HelloWorld\Chpt1_HelloWorld.cpp(397,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Chpt1_HelloWorld.vcxproj -> E:\Lukasz\Programming\C++\Chpt1_HelloWorld\Debug\Chpt1_HelloWorld.exe
